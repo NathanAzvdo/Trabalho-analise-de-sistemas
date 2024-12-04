@@ -41,4 +41,24 @@ public class Pedido {
 
     }
 
+    public void registrarFeedback(String feedback){
+        this.feedback = feedback;
+    }
+
+    @Override
+    public String toString() {
+        return "Pedido{" +
+                "id=" + id +
+                ", cliente=" + cliente +
+                ", produtos=" + produtos +
+                ", status=" + status +
+                ", feedback='" + feedback + '\'' +
+                ", prazoEntrega=" + prazoEntrega +
+                ", historicoStatus=" + historicoStatus +
+                '}';
+    }
+
+    public double calcularValorTotal() {
+        return produtos.stream().mapToDouble(p -> p.quantidade() * p.precoUnitario()).sum();
+    }
 }
